@@ -1,4 +1,6 @@
 const ProductCard = ({ product, addToCart, buyNow }) => {
+  const baseURL = "https://e-commerce-project-backend-yssb.onrender.com";
+
   return (
     <div
       style={{
@@ -9,7 +11,7 @@ const ProductCard = ({ product, addToCart, buyNow }) => {
       }}
     >
       <img
-        src={`https://e-commerce-project-backend-yssb.onrender.com${product.image}`}
+        src={`${baseURL}${product.image}`}
         alt={product.name}
         style={{ width: "100%", height: 180, objectFit: "cover", borderRadius: 5 }}
       />

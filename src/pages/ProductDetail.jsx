@@ -8,10 +8,11 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  // Fetch product details
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await API.get(`products/${id}/`);
+        const res = await API.get(`/api/products/${id}/`); // Updated root API
         setProduct(res.data);
       } catch (err) {
         console.log(err.response?.data || err);
@@ -20,9 +21,15 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
+  // Add to cart
   const addToCart = async () => {
+    if (quantity < 1 || quantity > product.stock) {
+      alert(`Please enter a quantity between 1 and ${product.stock}`);
+      return;
+    }
+
     try {
-      await API.post("cart/add/", { product_id: product.id, quantity });
+      await API.post("/api/cart/add/", { product_id: product.id, quantity });
       alert("Added to cart ✅");
     } catch (err) {
       alert("Please login to add to cart");
@@ -48,7 +55,7 @@ const ProductDetail = () => {
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
         {/* Product Image */}
         <img
-          src={`https://e-commerce-project-backend-yssb.onrender.com${product.image}`}
+          src={`https://e-commerce-project-backend-yssb.onrender.com${product.image}`} // Updated for deployed backend
           alt={product.name}
           style={{ width: 300, height: 300, objectFit: "cover", borderRadius: 10 }}
         />
@@ -80,7 +87,9 @@ const ProductDetail = () => {
               min={1}
               max={product.stock}
               value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              onChange={(e) =>
+                setQuantity(Math.min(Math.max(1, Number(e.target.value)), product.stock))
+              }
               style={{ width: 60, padding: 5, borderRadius: 5, border: "1px solid #ddd" }}
             />
           </div>

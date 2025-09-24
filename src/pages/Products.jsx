@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import API from "../api/axios";
 import ProductCard from "../components/ProductCard";
 import ProductFilter from "../components/ProductFilter";
 
@@ -81,6 +81,7 @@ const Products = () => {
           marginTop: 20,
         }}
       >
+        {products.length === 0 && <p>No products found.</p>}
         {products.map((product) => (
           <ProductCard
             key={product.id}
