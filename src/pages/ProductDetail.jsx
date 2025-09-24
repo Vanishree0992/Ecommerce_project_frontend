@@ -48,7 +48,7 @@ const ProductDetail = () => {
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
         {/* Product Image */}
         <img
-          src={`http://127.0.0.1:8000${product.image}`}
+          src={`https://e-commerce-project-backend-yssb.onrender.com${product.image}`}
           alt={product.name}
           style={{ width: 300, height: 300, objectFit: "cover", borderRadius: 10 }}
         />

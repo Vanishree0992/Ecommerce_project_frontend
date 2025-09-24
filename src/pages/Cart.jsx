@@ -72,7 +72,7 @@ const Cart = () => {
           }}
         >
           <img
-            src={`http://127.0.0.1:8000${item.product.image}`}
+            src={`https://e-commerce-project-backend-yssb.onrender.com${item.product.image}`}
             alt={item.product.name}
             style={{ width: 100, height: 100, objectFit: "cover", borderRadius: 5 }}
           />

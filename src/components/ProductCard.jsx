@@ -9,7 +9,7 @@ const ProductCard = ({ product, addToCart, buyNow }) => {
       }}
     >
       <img
-        src={`http://127.0.0.1:8000${product.image}`}
+        src={`https://e-commerce-project-backend-yssb.onrender.com${product.image}`}
         alt={product.name}
         style={{ width: "100%", height: 180, objectFit: "cover", borderRadius: 5 }}
       />
